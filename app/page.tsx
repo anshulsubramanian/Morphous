@@ -1,12 +1,15 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Navbar from "@/components/Navbar";
 import Section from "@/components/Section";
 import Image from "next/image";
 import AboutSection from "@/components/AboutSection";
 
 export default function Home() {
+  const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+  const [formMessage, setFormMessage] = useState('');
+
   useEffect(() => {
     // Check if we need to scroll to a section after navigation
     const scrollTo = sessionStorage.getItem("scrollTo");
@@ -105,7 +108,52 @@ export default function Home() {
 
             {/* Right Side - Form */}
             <div>
-              <form className="space-y-6">
+              <form 
+                className="space-y-6"
+                action="https://formspree.io/f/xjvqgqpn"
+                method="POST"
+                onSubmit={async (e) => {
+                  e.preventDefault();
+                  setFormStatus('submitting');
+                  setFormMessage('');
+
+                  const formData = new FormData(e.currentTarget);
+                  
+                  // Add hidden field for recipient email
+                  formData.append('_to', 'studiomorphous@gmail.com');
+                  formData.append('_subject', 'Meeting Request from Website');
+                  formData.append('_replyto', formData.get('email') as string);
+
+                  try {
+                    const response = await fetch('https://formspree.io/f/xjvqgqpn', {
+                      method: 'POST',
+                      body: formData,
+                      headers: {
+                        'Accept': 'application/json'
+                      }
+                    });
+
+                    if (response.ok) {
+                      setFormStatus('success');
+                      setFormMessage('Thank you! We\'ll get back to you soon.');
+                      (e.target as HTMLFormElement).reset();
+                      setTimeout(() => {
+                        setFormStatus('idle');
+                        setFormMessage('');
+                      }, 5000);
+                    } else {
+                      const data = await response.json();
+                      if (data.errors) {
+                        throw new Error(data.errors[0].message || 'Form submission failed');
+                      }
+                      throw new Error('Form submission failed');
+                    }
+                  } catch (error) {
+                    setFormStatus('error');
+                    setFormMessage('Something went wrong. Please email us directly at studiomorphous@gmail.com');
+                  }
+                }}
+              >
                 <div>
                   <input
                     type="text"
@@ -151,11 +199,23 @@ export default function Home() {
                     placeholder="Describe your project, goals, and what you're looking for"
                   />
                 </div>
+                {formMessage && (
+                  <div className={`p-4 rounded-lg ${
+                    formStatus === 'success' 
+                      ? 'bg-green-50 text-green-800 border border-green-200' 
+                      : formStatus === 'error'
+                      ? 'bg-red-50 text-red-800 border border-red-200'
+                      : 'bg-gray-50 text-gray-800 border border-gray-200'
+                  }`}>
+                    <p className="text-sm">{formMessage}</p>
+                  </div>
+                )}
                 <button
                   type="submit"
-                  className="w-full px-8 py-4 text-base sm:text-lg bg-black text-white font-semibold rounded-lg hover:bg-gray-800 active:bg-gray-700 transition-colors touch-manipulation"
+                  disabled={formStatus === 'submitting'}
+                  className="w-full px-8 py-4 text-base sm:text-lg bg-black text-white font-semibold rounded-lg hover:bg-gray-800 active:bg-gray-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors touch-manipulation"
                 >
-                  Submit
+                  {formStatus === 'submitting' ? 'Sending...' : 'Submit'}
                 </button>
               </form>
             </div>
