@@ -69,9 +69,9 @@ export default function AboutSection() {
         {/* Images Section */}
         <div
           ref={imagesRef}
-          className="flex justify-end gap-0 transition-all duration-1000 ease-in-out w-full"
+          className="flex flex-col md:flex-row justify-end gap-4 md:gap-0 transition-all duration-1000 ease-in-out w-full"
         >
-          <div className="relative w-96 md:w-[480px] aspect-[3/4] overflow-hidden">
+          <div className="relative w-full md:w-96 lg:w-[480px] aspect-[3/4] overflow-hidden mx-auto md:mx-0">
             <div
               className="relative w-full h-full transition-all duration-1000 ease-in-out"
               style={{
@@ -86,7 +86,7 @@ export default function AboutSection() {
               />
             </div>
           </div>
-          <div className="relative w-96 md:w-[480px] aspect-[3/4] overflow-hidden">
+          <div className="relative w-full md:w-96 lg:w-[480px] aspect-[3/4] overflow-hidden mx-auto md:mx-0">
             <div
               className="relative w-full h-full transition-all duration-1000 ease-in-out"
               style={{

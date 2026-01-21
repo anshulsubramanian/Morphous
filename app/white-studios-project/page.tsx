@@ -33,13 +33,13 @@ export default function WhiteStudiosProjectPage() {
       <Navbar />
       
       {/* Back Button */}
-      <nav className="fixed top-20 left-6 z-50">
+      <nav className="fixed top-16 sm:top-20 left-4 sm:left-6 z-50">
         <Link href="/work">
-          <button className="px-6 py-3 bg-black/90 backdrop-blur-sm border border-white/30 rounded-full hover:bg-black transition-colors flex items-center gap-2 shadow-lg text-white">
-            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <button className="px-4 sm:px-6 py-2 sm:py-3 bg-black/90 backdrop-blur-sm border border-white/30 rounded-full hover:bg-black transition-colors flex items-center gap-2 shadow-lg text-white text-sm sm:text-base">
+            <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
-            Back
+            <span className="hidden sm:inline">Back</span>
           </button>
         </Link>
       </nav>

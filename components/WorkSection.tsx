@@ -65,7 +65,7 @@ export default function WorkSection() {
     return workImages[Math.floor(Math.random() * workImages.length)];
   };
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+  const handlePointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
     if (!containerRef.current || !headingRef.current) return;
 
     const sectionRect = containerRef.current.getBoundingClientRect();
@@ -153,8 +153,8 @@ export default function WorkSection() {
       id="work"
       className="min-h-screen bg-black text-white py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden"
       ref={containerRef}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
+      onPointerMove={handlePointerMove}
+      onPointerLeave={handleMouseLeave}
     >
       <div className="max-w-7xl mx-auto relative z-10">
         <h2

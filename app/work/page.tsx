@@ -12,13 +12,13 @@ export default function WorkPage() {
       <Navbar />
       
       {/* Back Button */}
-      <nav className="fixed top-20 left-6 z-50">
+      <nav className="fixed top-16 sm:top-20 left-4 sm:left-6 z-50">
         <Link href="/">
-          <button className="px-6 py-3 bg-black/90 backdrop-blur-sm border border-white/30 rounded-full hover:bg-black transition-colors flex items-center gap-2 shadow-lg text-white">
-            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <button className="px-4 sm:px-6 py-2 sm:py-3 bg-black/90 backdrop-blur-sm border border-white/30 rounded-full hover:bg-black transition-colors flex items-center gap-2 shadow-lg text-white text-sm sm:text-base">
+            <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
-            Back
+            <span className="hidden sm:inline">Back</span>
           </button>
         </Link>
       </nav>
@@ -35,11 +35,11 @@ export default function WorkPage() {
       {/* Projects Grid Section */}
       <section className="bg-white text-black py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {/* The Garden Room */}
             <Link
               href="/tgr-project"
-              className="group relative bg-white border border-gray-200 rounded-lg overflow-hidden transition-opacity duration-300 cursor-pointer h-[600px] flex flex-col hover:opacity-70"
+              className="group relative bg-white border border-gray-200 rounded-lg overflow-hidden transition-opacity duration-300 cursor-pointer h-[500px] sm:h-[550px] md:h-[600px] flex flex-col hover:opacity-70 active:opacity-70"
             >
               {/* Image - 60% */}
               <div className="relative w-full flex-[0_0_60%] flex items-center justify-center bg-gray-50 p-4">
@@ -68,7 +68,7 @@ export default function WorkPage() {
             {/* White Studios */}
             <Link
               href="/white-studios-project"
-              className="group relative bg-white border border-gray-200 rounded-lg overflow-hidden transition-opacity duration-300 cursor-pointer h-[600px] flex flex-col hover:opacity-70"
+              className="group relative bg-white border border-gray-200 rounded-lg overflow-hidden transition-opacity duration-300 cursor-pointer h-[500px] sm:h-[550px] md:h-[600px] flex flex-col hover:opacity-70 active:opacity-70"
             >
               {/* Image - 60% */}
               <div className="relative w-full flex-[0_0_60%] flex items-center justify-center bg-gray-50 p-4">
@@ -97,7 +97,7 @@ export default function WorkPage() {
             {/* Kanha Decor */}
             <Link
               href="/kahna-project"
-              className="group relative bg-white border border-gray-200 rounded-lg overflow-hidden transition-opacity duration-300 cursor-pointer h-[600px] flex flex-col hover:opacity-70"
+              className="group relative bg-white border border-gray-200 rounded-lg overflow-hidden transition-opacity duration-300 cursor-pointer h-[500px] sm:h-[550px] md:h-[600px] flex flex-col hover:opacity-70 active:opacity-70"
             >
               {/* Image - 60% */}
               <div className="relative w-full flex-[0_0_60%] flex items-center justify-center bg-gray-50 p-4">
@@ -126,7 +126,7 @@ export default function WorkPage() {
             {/* Contours of Being */}
             <Link
               href="/contours-of-being-project"
-              className="group relative bg-white border border-gray-200 rounded-lg overflow-hidden transition-opacity duration-300 cursor-pointer h-[600px] flex flex-col hover:opacity-70"
+              className="group relative bg-white border border-gray-200 rounded-lg overflow-hidden transition-opacity duration-300 cursor-pointer h-[500px] sm:h-[550px] md:h-[600px] flex flex-col hover:opacity-70 active:opacity-70"
             >
               {/* Image - 60% */}
               <div className="relative w-full flex-[0_0_60%] flex items-center justify-center bg-gray-50 p-4">
@@ -155,7 +155,7 @@ export default function WorkPage() {
             {/* Inaaya Home */}
             <Link
               href="/inaaya-project"
-              className="group relative bg-white border border-gray-200 rounded-lg overflow-hidden transition-opacity duration-300 cursor-pointer h-[600px] flex flex-col hover:opacity-70"
+              className="group relative bg-white border border-gray-200 rounded-lg overflow-hidden transition-opacity duration-300 cursor-pointer h-[500px] sm:h-[550px] md:h-[600px] flex flex-col hover:opacity-70 active:opacity-70"
             >
               {/* Image - 60% */}
               <div className="relative w-full flex-[0_0_60%] flex items-center justify-center bg-gray-50 p-4">

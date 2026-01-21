@@ -13,6 +13,7 @@ const navItems = [
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState<string>("");
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -139,25 +140,68 @@ export default function Navbar() {
           </div>
           <div className="md:hidden">
             <button
-              className="text-gray-300 hover:text-white focus:outline-none"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="text-gray-300 hover:text-white focus:outline-none p-2"
               aria-label="Menu"
             >
-              <svg
-                className="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              </svg>
+              {isMobileMenuOpen ? (
+                <svg
+                  className="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              ) : (
+                <svg
+                  className="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M4 6h16M4 12h16M4 18h16"
+                  />
+                </svg>
+              )}
             </button>
           </div>
         </div>
+        
+        {/* Mobile Menu */}
+        {isMobileMenuOpen && (
+          <div className="md:hidden border-t border-gray-800 bg-black/95 backdrop-blur-md">
+            <div className="px-4 pt-2 pb-4 space-y-2">
+              {navItems.map((item) => {
+                const isActive = activeSection === item.href;
+                return (
+                  <a
+                    key={item.name}
+                    href={item.href}
+                    onClick={(e) => {
+                      handleClick(e, item.href);
+                      setIsMobileMenuOpen(false);
+                    }}
+                    className={`block text-white font-bold px-3 py-3 text-base transition-colors hover:opacity-80 ${
+                      isActive ? "underline decoration-2 underline-offset-4" : ""
+                    }`}
+                  >
+                    {item.name}
+                  </a>
+                );
+              })}
+            </div>
+          </div>
+        )}
       </div>
     </nav>
   );

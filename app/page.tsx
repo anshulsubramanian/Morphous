@@ -59,35 +59,27 @@ export default function Home() {
             </h2>
             
             {/* Description Text */}
-            <p className="text-white text-lg md:text-xl leading-relaxed max-w-4xl mx-auto mb-16">
+            <p className="text-white text-base sm:text-lg md:text-xl leading-relaxed max-w-4xl mx-auto mb-12 sm:mb-16 px-4">
               At Studio Morphous, we design with depth, shaping objects, furniture, and experiences that live with intention. Whether you're a brand, architect, or someone with an idea that needs form, we collaborate from first sketch to final build
             </p>
             
             {/* Service Pointers - 2 columns with white dots */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 max-w-3xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 md:gap-x-12 gap-y-6 max-w-3xl mx-auto px-4">
               <div className="flex flex-col items-center">
-                <div className="text-white text-lg md:text-xl">Furniture & Décor</div>
-                <div className="text-white text-lg md:text-xl">Conceptualization</div>
+                <div className="text-white text-base sm:text-lg md:text-xl text-center">Furniture & Décor</div>
+                <div className="text-white text-base sm:text-lg md:text-xl text-center">Conceptualization</div>
 
                 <div className="w-1.5 h-1.5 bg-white rounded-full my-2"></div>
-                <div className="text-white text-lg md:text-xl">Product Engineering</div>
-                <div className="text-white text-lg md:text-xl">& Prototyping</div>
-
-                {/* <div className="w-1.5 h-1.5 bg-white rounded-full my-2"></div> */}
-                {/* <div className="text-white text-lg md:text-xl">Spatial Design</div> */}
+                <div className="text-white text-base sm:text-lg md:text-xl text-center">Product Engineering</div>
+                <div className="text-white text-base sm:text-lg md:text-xl text-center">& Prototyping</div>
               </div>
               <div className="flex flex-col items-center">
-                <div className="text-white text-lg md:text-xl">Spatial Styling &</div>
-                <div className="text-white text-lg md:text-xl">Design Direction</div>
-
-
+                <div className="text-white text-base sm:text-lg md:text-xl text-center">Spatial Styling &</div>
+                <div className="text-white text-base sm:text-lg md:text-xl text-center">Design Direction</div>
 
                 <div className="w-1.5 h-1.5 bg-white rounded-full my-2"></div>
-                <div className="text-white text-lg md:text-xl">Development & Production</div>
-                <div className="text-white text-lg md:text-xl">Support</div>
-
-                {/* <div className="w-1.5 h-1.5 bg-white rounded-full my-2"></div> */}
-                {/* <div className="text-white text-lg md:text-xl">Creative Collaboration</div> */}
+                <div className="text-white text-base sm:text-lg md:text-xl text-center">Development & Production</div>
+                <div className="text-white text-base sm:text-lg md:text-xl text-center">Support</div>
               </div>
             </div>
           </div>
@@ -119,7 +111,7 @@ export default function Home() {
                     type="text"
                     id="fullName"
                     name="fullName"
-                    className="w-full px-4 py-3 bg-gray-100 border border-gray-300 rounded-lg text-black placeholder-gray-500 focus:outline-none focus:border-black transition-colors"
+                    className="w-full px-4 py-3 text-base bg-gray-100 border border-gray-300 rounded-lg text-black placeholder-gray-500 focus:outline-none focus:border-black transition-colors"
                     placeholder="Enter your first and last name"
                   />
                 </div>
@@ -128,7 +120,7 @@ export default function Home() {
                     type="text"
                     id="companyName"
                     name="companyName"
-                    className="w-full px-4 py-3 bg-gray-100 border border-gray-300 rounded-lg text-black placeholder-gray-500 focus:outline-none focus:border-black transition-colors"
+                    className="w-full px-4 py-3 text-base bg-gray-100 border border-gray-300 rounded-lg text-black placeholder-gray-500 focus:outline-none focus:border-black transition-colors"
                     placeholder="Enter your company or organization name"
                   />
                 </div>
@@ -137,7 +129,7 @@ export default function Home() {
                     type="email"
                     id="email"
                     name="email"
-                    className="w-full px-4 py-3 bg-gray-100 border border-gray-300 rounded-lg text-black placeholder-gray-500 focus:outline-none focus:border-black transition-colors"
+                    className="w-full px-4 py-3 text-base bg-gray-100 border border-gray-300 rounded-lg text-black placeholder-gray-500 focus:outline-none focus:border-black transition-colors"
                     placeholder="Enter your email address (e.g., name@company.com)"
                   />
                 </div>
@@ -146,7 +138,7 @@ export default function Home() {
                     type="text"
                     id="preferredTime"
                     name="preferredTime"
-                    className="w-full px-4 py-3 bg-gray-100 border border-gray-300 rounded-lg text-black placeholder-gray-500 focus:outline-none focus:border-black transition-colors"
+                    className="w-full px-4 py-3 text-base bg-gray-100 border border-gray-300 rounded-lg text-black placeholder-gray-500 focus:outline-none focus:border-black transition-colors"
                     placeholder="Enter preferred day and time (e.g., Monday, 2:00 PM)"
                   />
                 </div>
@@ -155,13 +147,13 @@ export default function Home() {
                     id="projectOverview"
                     name="projectOverview"
                     rows={5}
-                    className="w-full px-4 py-3 bg-gray-100 border border-gray-300 rounded-lg text-black placeholder-gray-500 focus:outline-none focus:border-black transition-colors resize-none"
+                    className="w-full px-4 py-3 text-base bg-gray-100 border border-gray-300 rounded-lg text-black placeholder-gray-500 focus:outline-none focus:border-black transition-colors resize-none"
                     placeholder="Describe your project, goals, and what you're looking for"
                   />
                 </div>
                 <button
                   type="submit"
-                  className="w-full px-8 py-3 bg-black text-white font-semibold rounded-lg hover:bg-gray-800 transition-colors"
+                  className="w-full px-8 py-4 text-base sm:text-lg bg-black text-white font-semibold rounded-lg hover:bg-gray-800 active:bg-gray-700 transition-colors touch-manipulation"
                 >
                   Submit
                 </button>
@@ -172,7 +164,7 @@ export default function Home() {
       </section>
 
       {/* Quote Section */}
-      <section className="relative h-[60vh] w-full flex items-center justify-center -mt-20 md:-mt-24">
+      <section className="relative min-h-[50vh] sm:h-[60vh] w-full flex items-center justify-center -mt-12 sm:-mt-20 md:-mt-24 py-12 sm:py-0">
         <div className="absolute inset-0 z-0">
           <Image
             src="/assets/images/IMG_1203.JPG"
@@ -182,10 +174,10 @@ export default function Home() {
           />
         </div>
         <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
-          <blockquote className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium leading-relaxed mb-6">
+          <blockquote className="text-white text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-medium leading-relaxed mb-4 sm:mb-6 px-2">
             To create something exceptional, your mindset must be relentlessly focused on the smallest detail.
           </blockquote>
-          <p className="text-white text-lg md:text-xl">
+          <p className="text-white text-base sm:text-lg md:text-xl">
             Giorgio Armani
           </p>
         </div>
@@ -193,8 +185,8 @@ export default function Home() {
 
       {/* Images Section */}
       <section className="bg-black w-full">
-        <div className="flex gap-0">
-          <div className="relative w-1/3 aspect-square">
+        <div className="flex flex-col sm:flex-row gap-0">
+          <div className="relative w-full sm:w-1/3 aspect-square">
             <Image
               src="/assets/images/LetsTalkImg2.png"
               alt="Let's Talk Image 2"
@@ -202,7 +194,7 @@ export default function Home() {
               className="object-cover"
             />
           </div>
-          <div className="relative w-1/3 aspect-square">
+          <div className="relative w-full sm:w-1/3 aspect-square">
             <Image
               src="/assets/images/LetsTalkImg4.png"
               alt="Let's Talk Image 4"
@@ -210,7 +202,7 @@ export default function Home() {
               className="object-cover"
             />
           </div>
-          <div className="relative w-1/3 aspect-square">
+          <div className="relative w-full sm:w-1/3 aspect-square">
             <Image
               src="/assets/images/LetsTalkImg6.png"
               alt="Let's Talk Image 6"
