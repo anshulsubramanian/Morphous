@@ -112,9 +112,9 @@ export default function Navbar() {
               <Image
                 src="/assets/images/SM_Transparent.png"
                 alt="Company Logo"
-                width={100}
-                height={32}
-                className="h-8 w-auto object-contain"
+                width={200}
+                height={64}
+                className="h-16 w-auto object-contain"
                 priority
               />
             </a>
@@ -159,19 +159,19 @@ export default function Navbar() {
                   />
                 </svg>
               ) : (
-                <svg
-                  className="h-6 w-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M4 6h16M4 12h16M4 18h16"
-                  />
-                </svg>
+              <svg
+                className="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              </svg>
               )}
             </button>
           </div>
