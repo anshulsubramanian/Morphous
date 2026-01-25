@@ -110,7 +110,7 @@ export default function Navbar() {
               className="flex items-center"
             >
               <Image
-                src="/assets/images/CompanyLogo.png"
+                src="/assets/images/SM_logo.png"
                 alt="Company Logo"
                 width={100}
                 height={32}

@@ -110,7 +110,7 @@ export default function Home() {
             <div>
               <form 
                 className="space-y-6"
-                action="https://formspree.io/f/xjvqgqpn"
+                action="https://formspree.io/f/xwvvyjpg"
                 method="POST"
                 onSubmit={async (e) => {
                   e.preventDefault();
@@ -125,7 +125,7 @@ export default function Home() {
                   formData.append('_replyto', formData.get('email') as string);
 
                   try {
-                    const response = await fetch('https://formspree.io/f/xjvqgqpn', {
+                    const response = await fetch('https://formspree.io/f/xwvvyjpg', {
                       method: 'POST',
                       body: formData,
                       headers: {
