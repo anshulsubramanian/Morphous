@@ -16,38 +16,28 @@ const services = [
   },
   {
     number: "03",
-    title: "Interior Architecture",
-    cover: "/assets/services/interior_architecture.png",
+    title: "Product Design",
+    cover: "/assets/services/product_design.jpg",
   },
   {
     number: "04",
-    title: "Product Design",
-    cover: "/assets/services/product_design.png",
+    title: "3D Visualization",
+    cover: "/assets/services/visualization.jpg",
   },
   {
     number: "05",
-    title: "3D Visualization",
-    cover: "/assets/services/visualization.png",
+    title: "Technical Documentation",
+    cover: "/assets/services/technical_docs.jpg",
   },
   {
     number: "06",
-    title: "Technical Documentation",
-    cover: "/assets/services/technical_docs.png",
+    title: "Material & Finish Strategy",
+    cover: "/assets/services/material_strategy.jpg",
   },
   {
     number: "07",
-    title: "Material & Finish Strategy",
-    cover: "/assets/services/material_strategy.png",
-  },
-  {
-    number: "08",
-    title: "Procurement & Project Management",
-    cover: "/assets/services/procurement.png",
-  },
-  {
-    number: "09",
     title: "Turnkey Delivery",
-    cover: "/assets/services/turnkey.png",
+    cover: "/assets/services/turnkey.jpg",
   },
 ];
 
@@ -285,7 +275,7 @@ export default function ServicesSection() {
             />
           </div>
 
-          <span className="w-8 text-right">09</span>
+          <span className="w-8 text-right">{String(services.length).padStart(2, "0")}</span>
         </div>
 
       </div>
