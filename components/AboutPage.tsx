@@ -89,22 +89,17 @@ export default function AboutPage() {
                   className="font-serif font-light text-warm-white leading-[1.2] mb-8 uppercase tracking-wide"
                   style={{ fontSize: "clamp(1.75rem, 3.5vw, 2.75rem)" }}
                 >
-                  We design with depth — shaping spaces, objects, and furniture that live with quiet intention.
+                  At Studio Morphous, we believe spaces and objects should evolve with the people who use them.
                 </h2>
               </Reveal>
               <Reveal delay={0.1}>
                 <p className="font-sans text-warm-white/60 text-sm leading-relaxed mb-6 font-light">
-                  Studio Morphous was founded in Gurugram on a simple design belief: that great work should feel inevitable. Across high-end residential redesigns, workspaces, and bespoke product collections, we prioritize spatial harmony, material honesty, and advanced CMF (Color, Material, Finish) strategy.
+                  We're a design studio specializing in product and interior design, shaping ideas into forms that are functional, beautiful, and built to last. From a single product to an entire room, we approach every project with curiosity, craft, and an eye for detail, transforming concepts into spaces and objects that feel effortlessly right.
                 </p>
               </Reveal>
               <Reveal delay={0.15}>
-                <p className="font-sans text-warm-white/60 text-sm leading-relaxed mb-6 font-light">
-                  Our portfolio navigates both spatial scale and refined object development. From the precision-crafted joinery of custom walk-in closets and modern collaborative office systems to the sculptural elegance of furniture pieces like our Opal, Strata, and Orb collections, every project is a dialogue between form and feeling.
-                </p>
-              </Reveal>
-              <Reveal delay={0.2}>
                 <p className="font-sans text-warm-white/60 text-sm leading-relaxed font-light">
-                  We balance structural rigor with sensory richness, creating environments and objects that reward close, quiet attention.
+                  Design, after all, is never static. It morphs, adapts, and grows, and so do we.
                 </p>
               </Reveal>
             </div>
