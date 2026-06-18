@@ -69,11 +69,9 @@ export default function AboutPage() {
               className="font-serif font-light text-warm-white leading-tight uppercase tracking-wider"
               style={{ fontSize: "clamp(2.5rem, 6.5vw, 5.5rem)", letterSpacing: "-0.01em" }}
             >
-              A multidisciplinary
+              Design that
               <br />
-              design practice built on
-              <br />
-              <span className="italic font-serif text-soft-beige font-light lowercase">material sensitivity.</span>
+              <span className="italic font-serif text-soft-beige font-light lowercase">morphs with you!</span>
             </h1>
           </Reveal>
         </div>
@@ -115,41 +113,6 @@ export default function AboutPage() {
                 </div>
                 <p className="text-caption text-warm-white/40 font-mono text-[9px] uppercase tracking-wider">Studio process and material studies.</p>
               </Reveal>
-            </div>
-          </div>
-
-          {/* Values grid */}
-          <div className="border-t border-warm-white/10 pt-16 mb-24 md:mb-36">
-            <Reveal>
-              <p className="text-caption text-soft-beige/60 mb-10 font-mono tracking-widest text-xs uppercase">How We Work</p>
-            </Reveal>
-            <div className="grid md:grid-cols-3 gap-6 md:gap-8">
-              {[
-                {
-                  title: "Spatial Rigor",
-                  body: "Whether organizing a custom dressing cabinet system, laying out an open-plan workstation lobby, or shaping a bedside companion, we believe proportion is everything. We construct grids to frame life.",
-                },
-                {
-                  title: "Material as Voice",
-                  body: "We select metals, timbers, stone, and glass not just for their static visual presence, but for how they reflect light, feel to the touch, and develop character over years of daily interaction.",
-                },
-                {
-                  title: "Bespoke CMF Strategy",
-                  body: "Color, material, and finish are never secondary additions. We treat them as architectural components, coordinating custom textures and coves to define the emotional tone of every space.",
-                },
-              ].map((v, i) => (
-                <Reveal key={v.title} delay={i * 0.1}>
-                  <div className="bg-matte-black/40 border border-warm-white/10 p-8 md:p-10 h-full flex flex-col gap-4">
-                    <span className="font-mono text-soft-beige/40 text-[10px] tracking-widest">0{i + 1}</span>
-                    <h3 className="font-serif font-light text-warm-white text-lg tracking-wider uppercase">
-                      {v.title}
-                    </h3>
-                    <p className="font-sans text-warm-white/60 text-sm leading-relaxed font-light">
-                      {v.body}
-                    </p>
-                  </div>
-                </Reveal>
-              ))}
             </div>
           </div>
 
