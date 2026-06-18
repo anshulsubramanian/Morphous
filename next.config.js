@@ -5,7 +5,7 @@ const nextConfig = {
     unoptimized: true,
   },
   trailingSlash: true,
+  transpilePackages: ['lenis'],
 };
 
 module.exports = nextConfig;
-

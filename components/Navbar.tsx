@@ -1,209 +1,218 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Image from "next/image";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { motion, AnimatePresence } from "framer-motion";
 
 const navItems = [
   { name: "Work", href: "/work" },
   { name: "About", href: "/about" },
-  { name: "Let's Talk", href: "#lets-talk" },
+  { name: "Contact", href: "#contact" },
 ];
 
 export default function Navbar() {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [activeSection, setActiveSection] = useState<string>("");
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-      
-      // Check which section is in view for anchor links
-      if (pathname === "/") {
-        const sections = ["about", "lets-talk"];
-        const scrollPosition = window.scrollY + 100;
-        
-        for (let i = sections.length - 1; i >= 0; i--) {
-          const element = document.getElementById(sections[i]);
-          if (element && element.offsetTop <= scrollPosition) {
-            setActiveSection(`#${sections[i]}`);
-            break;
-          }
-        }
-        
-        // If at top, no active section
-        if (window.scrollY < 100) {
-          setActiveSection("");
-        }
-      }
-    };
-    
-    // Check initial scroll position
-    handleScroll();
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [pathname]);
-  
-  // Set active section based on pathname
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   useEffect(() => {
-    if (pathname === "/work") {
-      setActiveSection("/work");
-    } else if (pathname === "/about") {
-      setActiveSection("/about");
-    } else if (pathname === "/") {
-      setActiveSection("");
-    } else {
-      setActiveSection("");
+    setMenuOpen(false);
+  }, [pathname]);
+
+  useEffect(() => {
+    if (pathname === "/") {
+      const scrollTo = sessionStorage.getItem("scrollTo");
+      if (scrollTo) {
+        sessionStorage.removeItem("scrollTo");
+        const timer = setTimeout(() => {
+          const el = document.querySelector(scrollTo);
+          if (el) el.scrollIntoView({ behavior: "smooth" });
+        }, 500);
+        return () => clearTimeout(timer);
+      }
     }
   }, [pathname]);
 
-  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    // If it's a page link (starts with /), use Next.js navigation
-    if (href.startsWith("/")) {
-      e.preventDefault();
-      window.location.href = href;
-      return;
-    }
-    
-    // Otherwise, it's an anchor link for smooth scrolling
-    e.preventDefault();
-    
-    // If we're on a different page and clicking an anchor link, navigate to home first
-    if (pathname !== "/" && href.startsWith("#")) {
-      // Store the hash to scroll to after navigation
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [menuOpen]);
+
+  const handleAnchor = (href: string) => {
+    if (!href.startsWith("#")) return;
+    if (pathname !== "/") {
       sessionStorage.setItem("scrollTo", href);
       window.location.href = "/";
       return;
     }
-    
-    // If we're on the home page, scroll to the section
-    const element = document.querySelector(href);
-    if (element) {
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - 64; // 64px for navbar height
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth",
-      });
-    }
+    const el = document.querySelector(href);
+    if (el) el.scrollIntoView({ behavior: "smooth" });
+    setMenuOpen(false);
   };
 
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-black/90 backdrop-blur-md ${
-        isScrolled ? "border-b border-gray-800" : ""
-      }`}
-    >
-      <div className="max-w-7xl mx-auto pl-2 sm:pl-4 lg:pl-6 pr-8 sm:pr-12 lg:pr-16">
-        <div className="flex items-center justify-between h-16">
-          <div className="flex-shrink-0 -ml-2 sm:-ml-4">
-            <a
+    <>
+      <header
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${
+          scrolled ? "bg-matte-black/90 backdrop-blur-sm" : "bg-transparent"
+        }`}
+      >
+        <div className="flex items-center justify-between px-6 md:px-10 lg:px-16 h-16 md:h-20 relative">
+          {/* Logo */}
+          <Link
+            href="/"
+            className="text-warm-white font-serif text-lg tracking-[0.15em] font-light hover:text-soft-beige transition-colors duration-300"
+          >
+            STUDIO MORPHOUS
+          </Link>
+
+          {/* Centered SM Monogram */}
+          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 hidden md:block pointer-events-auto">
+            <Link
               href="/"
-              onClick={(e) => {
-                if (pathname !== "/") {
-                  e.preventDefault();
-                  window.location.href = "/";
-                }
-              }}
-              className="flex items-center"
+              className="text-warm-white font-serif text-lg tracking-[0.2em] font-light hover:text-soft-beige transition-colors duration-300"
             >
-              <Image
-                src="/assets/images/SM_Transparent.png"
-                alt="Company Logo"
-                width={200}
-                height={64}
-                className="h-16 w-auto object-contain"
-                priority
-              />
-            </a>
+              SM
+            </Link>
           </div>
-          <div className="hidden md:block">
-            <div className="flex items-baseline space-x-8">
-              {navItems.map((item) => {
-                const isActive = activeSection === item.href;
-                return (
-                  <a
-                    key={item.name}
-                    href={item.href}
-                    onClick={(e) => handleClick(e, item.href)}
-                    className={`text-white font-bold px-3 py-2 text-sm transition-colors hover:opacity-80 relative ${
-                      isActive ? "underline decoration-2 underline-offset-4" : ""
-                    }`}
-                  >
-                    {item.name}
-                  </a>
-                );
-              })}
-            </div>
-          </div>
-          <div className="md:hidden">
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="text-gray-300 hover:text-white focus:outline-none p-2"
-              aria-label="Menu"
-            >
-              {isMobileMenuOpen ? (
-                <svg
-                  className="h-6 w-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
+
+          {/* Desktop nav */}
+          <nav className="hidden md:flex items-center gap-5 text-caption">
+            {navItems.map((item, index) => {
+              const isActive =
+                item.href.startsWith("/") && pathname === item.href;
+              const element = item.href.startsWith("#") ? (
+                <button
+                  key={item.name}
+                  onClick={() => handleAnchor(item.href)}
+                  className={`text-caption transition-colors duration-300 link-hover ${
+                    isActive ? "text-warm-white font-normal" : "text-warm-white/60 hover:text-warm-white"
+                  }`}
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                </svg>
+                  {item.name.toUpperCase()}
+                </button>
               ) : (
-              <svg
-                className="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              </svg>
-              )}
-            </button>
-          </div>
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  className={`text-caption transition-colors duration-300 link-hover ${
+                    isActive
+                      ? "text-warm-white font-normal"
+                      : "text-warm-white/60 hover:text-warm-white"
+                  }`}
+                >
+                  {item.name.toUpperCase()}
+                </Link>
+              );
+
+              if (index === 0) {
+                return element;
+              }
+
+              return (
+                <div key={item.name} className="flex items-center gap-5">
+                  <span className="text-warm-white/20 select-none pointer-events-none text-[10px] font-sans font-light">/</span>
+                  {element}
+                </div>
+              );
+            })}
+          </nav>
+
+          {/* Mobile hamburger */}
+          <button
+            className="md:hidden flex flex-col gap-1.5 p-2 group"
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label="Menu"
+          >
+            <span
+              className={`block w-6 h-px bg-warm-white transition-all duration-300 ${
+                menuOpen ? "rotate-45 translate-y-2" : ""
+              }`}
+            />
+            <span
+              className={`block w-6 h-px bg-warm-white transition-all duration-300 ${
+                menuOpen ? "opacity-0" : ""
+              }`}
+            />
+            <span
+              className={`block w-6 h-px bg-warm-white transition-all duration-300 ${
+                menuOpen ? "-rotate-45 -translate-y-2" : ""
+              }`}
+            />
+          </button>
         </div>
-        
-        {/* Mobile Menu */}
-        {isMobileMenuOpen && (
-          <div className="md:hidden border-t border-gray-800 bg-black/95 backdrop-blur-md">
-            <div className="px-4 pt-2 pb-4 space-y-2">
-              {navItems.map((item) => {
-                const isActive = activeSection === item.href;
-                return (
-                  <a
-                    key={item.name}
-                    href={item.href}
-                    onClick={(e) => {
-                      handleClick(e, item.href);
-                      setIsMobileMenuOpen(false);
-                    }}
-                    className={`block text-white font-bold px-3 py-3 text-base transition-colors hover:opacity-80 ${
-                      isActive ? "underline decoration-2 underline-offset-4" : ""
-                    }`}
-                  >
-                    {item.name}
-                  </a>
-                );
-              })}
+      </header>
+
+      {/* Mobile menu */}
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.4 }}
+            className="fixed inset-0 z-40 bg-matte-black flex flex-col"
+          >
+            <div className="flex items-center justify-between px-6 h-16">
+              <Link
+                href="/"
+                onClick={() => setMenuOpen(false)}
+                className="text-warm-white font-serif text-lg tracking-[0.15em] font-light"
+              >
+                STUDIO MORPHOUS
+              </Link>
+              <button
+                onClick={() => setMenuOpen(false)}
+                className="p-2 text-warm-white/60 hover:text-warm-white"
+                aria-label="Close"
+              >
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <path d="M2 2L18 18M18 2L2 18" stroke="currentColor" strokeWidth="1" />
+                </svg>
+              </button>
             </div>
-          </div>
+            <div className="flex-1 flex flex-col justify-center px-8 gap-10">
+              {navItems.map((item, i) => (
+                <motion.div
+                  key={item.name}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: i * 0.08 + 0.1, duration: 0.5 }}
+                >
+                  {item.href.startsWith("#") ? (
+                    <button
+                      onClick={() => handleAnchor(item.href)}
+                      className="font-serif text-5xl text-warm-white/80 hover:text-warm-white font-light italic transition-colors duration-300 text-left"
+                    >
+                      {item.name}
+                    </button>
+                  ) : (
+                    <Link
+                      href={item.href}
+                      onClick={() => setMenuOpen(false)}
+                      className="font-serif text-5xl text-warm-white/80 hover:text-warm-white font-light italic transition-colors duration-300"
+                    >
+                      {item.name}
+                    </Link>
+                  )}
+                </motion.div>
+              ))}
+            </div>
+            <div className="px-8 pb-12">
+              <p className="text-caption text-warm-gray">
+                studiomorphous@gmail.com
+              </p>
+            </div>
+          </motion.div>
         )}
-      </div>
-    </nav>
+      </AnimatePresence>
+    </>
   );
 }
-
