@@ -79,18 +79,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Full-bleed image with grain overlay */}
-      <div className="relative h-[60vh] md:h-[75vh] w-full overflow-hidden border-b border-warm-white/10">
-        <Image
-          src="/assets/images/AboutImg1.png"
-          alt="Studio Morphous Workspace"
-          fill
-          className="object-cover img-grain"
-          priority
-        />
-        <div className="absolute inset-0 bg-black/25 pointer-events-none" />
-      </div>
-
       {/* About body */}
       <section className="py-24 md:py-36 px-6 md:px-10 lg:px-16 bg-black">
         <div className="max-w-7xl mx-auto">

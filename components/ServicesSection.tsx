@@ -12,7 +12,7 @@ const services = [
   {
     number: "02",
     title: "Interior Design",
-    cover: "/assets/services/interior_design.png",
+    cover: "/assets/services/interior_design.jpg",
   },
   {
     number: "03",
