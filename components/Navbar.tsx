@@ -75,11 +75,12 @@ export default function Navbar() {
 
           {/* Centered SM Monogram */}
           <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 hidden md:block pointer-events-auto">
-            <Link
-              href="/"
-              className="text-warm-white font-serif text-lg tracking-[0.2em] font-light hover:text-soft-beige transition-colors duration-300"
-            >
-              SM
+            <Link href="/" className="block hover:opacity-80 transition-opacity duration-300">
+              <img
+                src="/assets/images/logo_monogram.png"
+                alt="Studio Morphous"
+                className="h-10 md:h-12 w-auto object-contain"
+              />
             </Link>
           </div>
 
