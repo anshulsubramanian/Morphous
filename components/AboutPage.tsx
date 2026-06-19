@@ -83,6 +83,9 @@ export default function AboutPage() {
           <div className="grid md:grid-cols-12 gap-12 md:gap-16 lg:gap-24 mb-24 md:mb-36">
             <div className="md:col-span-7 flex flex-col justify-center">
               <Reveal>
+                <p className="text-caption text-soft-beige/60 mb-4 uppercase font-mono tracking-widest text-[10px] md:text-xs">From the Founders' Desk</p>
+              </Reveal>
+              <Reveal delay={0.05}>
                 <h2
                   className="font-serif font-light text-warm-white leading-[1.2] mb-8 uppercase tracking-wide"
                   style={{ fontSize: "clamp(1.75rem, 3.5vw, 2.75rem)" }}
@@ -105,13 +108,13 @@ export default function AboutPage() {
               <Reveal delay={0.1}>
                 <div className="relative aspect-[3/4] overflow-hidden bg-matte-black border border-warm-white/10 mb-6">
                   <Image
-                    src="/assets/images/AboutImg2.png"
-                    alt="Material Strategy and Process"
+                    src="/assets/images/founders.jpg"
+                    alt="Founders of Studio Morphous"
                     fill
                     className="object-cover img-grain"
                   />
                 </div>
-                <p className="text-caption text-warm-white/40 font-mono text-[9px] uppercase tracking-wider">Studio process and material studies.</p>
+                <p className="text-caption text-warm-white/40 font-mono text-[9px] uppercase tracking-wider">Founders of Studio Morphous.</p>
               </Reveal>
             </div>
           </div>
