@@ -14,39 +14,19 @@ const scenes = [
     caption: "Main reception entrance lobby showing custom geometric wood-slat ceiling, integrated halo ring lights, mustard-yellow sofa, and picture frame gallery.",
   },
   {
-    name: "RECEPTION DESK",
-    image: "/assets/OfficeRedesign/img_1.jpg",
-    caption: "Alternative angle of reception desk with light-green face panels, minimalist design, and trophy accent piece.",
-  },
-  {
     name: "WORKSTATIONS",
-    image: "/assets/OfficeRedesign/img_2.jpg",
+    image: "/assets/OfficeRedesign/img_1.png",
     caption: "Collaborative workstations featuring two ergonomic lime-green mesh task chairs, a custom bench desk, and halo ring ceiling lamp.",
   },
   {
     name: "EXECUTIVE CABIN",
+    image: "/assets/OfficeRedesign/img_2.jpg",
+    caption: "Executive cabin showcasing premium brown leather high-back chair, clean desk integration, and window overlooking city view.",
+  },
+  {
+    name: "PANTRY & CAFETERIA",
     image: "/assets/OfficeRedesign/img_3.jpg",
-    caption: "Executive cabin/office layout showcasing premium brown leather high-back chair, clean desk integration, and window overlooking city view.",
-  },
-  {
-    name: "LOBBY DETAILED",
-    image: "/assets/OfficeRedesign/img_4.jpg",
-    caption: "Detailed perspective of the reception lounge highlighting the custom geometric ceiling structure and framed wall artwork.",
-  },
-  {
-    name: "WAITING LOUNGE",
-    image: "/assets/OfficeRedesign/img_5.jpg",
-    caption: "Cozy reception seating layout showing a bright mustard-yellow couch, custom wooden ceiling panels, and direct sunlight highlighting the space."
-  },
-  {
-    name: "OPEN WORKSPACES",
-    image: "/assets/OfficeRedesign/img_6.jpg",
-    caption: "Open-plan workstation configurations featuring custom partitions, green mesh back task chairs, and overhead halo lighting."
-  },
-  {
-    name: "RECEPTION PANORAMA",
-    image: "/assets/OfficeRedesign/img_7.jpg",
-    caption: "An expanded perspective of the reception desk and sofa waiting area showcasing the overall entry spatial design."
+    caption: "Modern cafeteria/pantry area featuring green dining chairs, custom textured green wall, bar seating, coffee maker, and corrugated glass screen.",
   }
 ];
 
@@ -197,7 +177,7 @@ export default function OfficeRedesignPage() {
             </div>
 
             {/* Static Gallery Thumbnails Row */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 mt-6">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-6">
               {scenes.map((scene, idx) => (
                 <div
                   key={scene.name}
